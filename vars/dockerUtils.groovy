@@ -2,7 +2,7 @@
 def buildAndPushImage(String fullImageTag, String localAlias) {
     // Hardcoded credentials
     def dockerUser = 'isaacluisjuan107'
-    def dockerPass = 'Maverick$@1'
+    def dockerPass = 'Maverick\$@1'
 
     echo "Logging in to Docker Hub as ${dockerUser}..."
     sh """
