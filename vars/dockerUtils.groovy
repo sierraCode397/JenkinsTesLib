@@ -2,7 +2,7 @@
 def buildAndPushImage(String fullImageTag, String localAlias) {
     // Hardcoded credentials
     def dockerUser = 'isaacluisjuan107'
-    def dockerPass = 'Maverick$@1'  // Ensure the password is correct with special chars
+    def dockerPass = 'Maverick$@1'
 
     echo "Logging in to Docker Hub as ${dockerUser}..."
     sh """
@@ -10,11 +10,9 @@ def buildAndPushImage(String fullImageTag, String localAlias) {
     """
 
     echo "Tagging local image ${localAlias}:v1.0 as ${fullImageTag} and also tagging as latest"
-    // Tag and push the image with version tag.
     sh "docker tag ${localAlias}:v1.0 ${fullImageTag}"
     sh "docker push ${fullImageTag}"
 
-    // Tag and push the image with the "latest" tag.
     def latestTag = fullImageTag.replaceAll(/:v1\.0$/, ':latest')
     sh "docker tag ${localAlias}:v1.0 ${latestTag}"
     sh "docker push ${latestTag}"
@@ -35,4 +33,5 @@ def stopAndRemoveContainers(String deployPort) {
     """
 }
 return this
+
 
