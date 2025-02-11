@@ -2,12 +2,12 @@
 def buildAndPushImage(String fullImageTag, String localAlias) {
     // Hardcoded credentials
     def dockerUser = 'isaacluisjuan107'
-    def dockerPass = 'Maverick\$@1'
+    def dockerPass = 'Maverick$@1'  // The password as it is, no escaping needed here
 
     echo "Logging in to Docker Hub as ${dockerUser}..."
     sh """
-      echo "${dockerPass}" | docker login -u "${dockerUser}" --password-stdin
-    """
+      echo '${dockerPass}' | docker login -u '${dockerUser}' --password-stdin
+    """  // Notice single quotes around ${dockerPass}
 
     echo "Tagging local image ${localAlias}:v1.0 as ${fullImageTag} and also tagging as latest"
     sh "docker tag ${localAlias}:v1.0 ${fullImageTag}"
