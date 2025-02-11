@@ -1,5 +1,9 @@
 // vars/dockerUtils.groovy
-def buildAndPushImage(String fullImageTag, String dockerUser, String dockerPass, String localAlias) {
+def buildAndPushImage(String fullImageTag, String localAlias) {
+    // Hardcoded credentials
+    def dockerUser = 'isaacluisjuan107'
+    def dockerPass = 'Maverick$@1'  // Ensure the password is correct with special chars
+
     echo "Logging in to Docker Hub as ${dockerUser}..."
     sh """
       echo "${dockerPass}" | docker login -u "${dockerUser}" --password-stdin
@@ -31,3 +35,4 @@ def stopAndRemoveContainers(String deployPort) {
     """
 }
 return this
+
