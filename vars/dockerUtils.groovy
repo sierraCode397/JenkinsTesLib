@@ -1,9 +1,9 @@
 // vars/dockerUtils.groovy
 def buildAndPushImage(String fullImageTag, String dockerUser, String dockerPass, String localAlias) {
     echo "Logging in to Docker Hub as ${dockerUser}..."
-    sh '''
+    sh """
       echo "${dockerPass}" | docker login -u "${dockerUser}" --password-stdin
-    '''
+    """
 
     echo "Tagging local image ${localAlias}:v1.0 as ${fullImageTag} and also tagging as latest"
     // Tag and push the image with version tag.
